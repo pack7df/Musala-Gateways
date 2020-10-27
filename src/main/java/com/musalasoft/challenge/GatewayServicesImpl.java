@@ -29,7 +29,12 @@ public class GatewayServicesImpl implements IGatewayServices {
 
     @Override
     public boolean update(Gateway entity) {
-        return false;
+        var gatewayToEdit = repository.FindGateWayById(entity.getId());
+        if (gatewayToEdit==null) return false;
+        var gatewayFound = repository.FindGatewayBySerial(entity.getSerial());
+        if ((gatewayFound!=null) && (gatewayFound.getId()!=entity.getId())) return false;
+        repository.update(entity);
+        return true;
     }
 
     @Override
