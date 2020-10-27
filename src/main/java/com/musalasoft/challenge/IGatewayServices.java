@@ -7,7 +7,7 @@ import java.util.List;
 public interface IGatewayServices {
     Gateway findBySerial(String serial);
     boolean add(Gateway data);
-    boolean save(Gateway entity);
+    boolean update(Gateway entity);
     boolean remove(String serial);
     List<Gateway> getAll();
 }

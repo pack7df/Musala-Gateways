@@ -4,13 +4,18 @@ import com.musalasoft.challenge.entities.Gateway;
 
 public interface IGatewayRepository {
     /**
-     *
-     * Saves or updates a gateway. The operation depends on serial. If it's null it add, else it updates.
-     * Peripherals list updated if the list IS NULL, otherwise IT'S NOT updated.
+     * Insert a new gateway in database.
      * @return Gateway data saved.
-     * @param gateway Gateway data to be created or updated.
+     * @param gateway Gateway data inserted.
      */
-    Gateway saveOrUpdate(Gateway gateway);
+    Gateway insert(Gateway gateway);
+
+    /**
+     * Updates a gateway in database given the serial field.
+     * @param gateway Gateway data to update.
+     * @return Gateway data updated.
+     */
+    Gateway update(Gateway gateway);
 
     /**
      *

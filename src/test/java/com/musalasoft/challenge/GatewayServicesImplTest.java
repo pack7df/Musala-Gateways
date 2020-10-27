@@ -9,9 +9,9 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.*;
 
-/*
-* Gateway services test.
-* */
+/**
+ * Gateway services test.
+*/
 class GatewayServicesImplTest {
 
     GatewayServicesImpl subject;
@@ -19,8 +19,8 @@ class GatewayServicesImplTest {
 
     @BeforeEach
     void setUp() {
-        subject = new GatewayServicesImpl();
         repositoryMock = mock(IGatewayRepository.class);
+        subject = new GatewayServicesImpl(repositoryMock);
     }
 
     @AfterEach
@@ -40,11 +40,11 @@ class GatewayServicesImplTest {
 
     @Test()
     public void addGateway_OnSuccess_RepositorySave(){
-        configure_AddGatewayCase_GatewayExists();
+        configure_AddGatewayCase_HappyWay();
 
         var result= subject.add(addSample);
 
-        verify(repositoryMock, times(1)).saveOrUpdate(addSample);
+        verify(repositoryMock, times(1)).insert(addSample);
     }
 
     @Test()
@@ -62,7 +62,7 @@ class GatewayServicesImplTest {
 
         var result= subject.add(addSample);
 
-        verify(repositoryMock, times(1)).saveOrUpdate(addSample);
+        verify(repositoryMock, never()).insert(addSample);
     }
 
     @Test()
