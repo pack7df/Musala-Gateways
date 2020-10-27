@@ -7,6 +7,14 @@ public class Gateway {
     private String serial;
     private String name;
     private String ip;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String value) {
+        id = value;
+   }
 
     List<Peripherical> periphericals = new ArrayList<>();
 

@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 /**
- * Gateway services test.
+ * Gateway services. Add cases test.
 */
 class GatewayServicesAddTest {
 

@@ -23,4 +23,6 @@ public interface IGatewayRepository {
      * @return A Gateway found or null if no gateway exists with the given serial.
      */
     Gateway FindGatewayBySerial(String serial);
+
+    Gateway FindGateWayById(String Id);
 }
