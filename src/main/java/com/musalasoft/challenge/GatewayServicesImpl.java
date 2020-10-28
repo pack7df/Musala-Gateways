@@ -7,21 +7,18 @@ import java.util.List;
 public class GatewayServicesImpl implements IGatewayServices {
     private IGatewayRepository repository;
 
-    /**
-     * Creates a new Gateway Services.
-     * @param repository Repository instance to manage DB.
-     */
     public GatewayServicesImpl(IGatewayRepository repository){
         this.repository = repository;
     }
+
     @Override
-    public Gateway findBySerial(String serial) {
-        return null;
+    public Gateway findById(String id) {
+        return repository.findGateWayById(id);
     }
 
     @Override
     public boolean add(Gateway data) {
-        var gatewayFound = repository.FindGatewayBySerial(data.getSerial());
+        var gatewayFound = repository.findGatewayBySerial(data.getSerial());
         if (gatewayFound!=null) return false;
         repository.insert(data);
         return true;
@@ -29,21 +26,24 @@ public class GatewayServicesImpl implements IGatewayServices {
 
     @Override
     public boolean update(Gateway entity) {
-        var gatewayToEdit = repository.FindGateWayById(entity.getId());
+        var gatewayToEdit = repository.findGateWayById(entity.getId());
         if (gatewayToEdit==null) return false;
-        var gatewayFound = repository.FindGatewayBySerial(entity.getSerial());
+        var gatewayFound = repository.findGatewayBySerial(entity.getSerial());
         if ((gatewayFound!=null) && (gatewayFound.getId()!=entity.getId())) return false;
         repository.update(entity);
         return true;
     }
 
     @Override
-    public boolean remove(String serial) {
-        return false;
+    public boolean remove(String id) {
+        var gatewayToEdit = repository.findGateWayById(id);
+        if (gatewayToEdit==null) return false;
+        repository.remove(id);
+        return true;
     }
 
     @Override
     public List<Gateway> getAll() {
-        return null;
+        return repository.findAll();
     }
 }

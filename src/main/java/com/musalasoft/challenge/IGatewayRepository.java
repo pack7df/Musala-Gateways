@@ -2,6 +2,8 @@ package com.musalasoft.challenge;
 
 import com.musalasoft.challenge.entities.Gateway;
 
+import java.util.List;
+
 public interface IGatewayRepository {
     /**
      * Insert a new gateway in database.
@@ -22,7 +24,11 @@ public interface IGatewayRepository {
      * @param serial Serial valur to find the gateway.
      * @return A Gateway found or null if no gateway exists with the given serial.
      */
-    Gateway FindGatewayBySerial(String serial);
+    Gateway findGatewayBySerial(String serial);
 
-    Gateway FindGateWayById(String Id);
+    Gateway findGateWayById(String Id);
+
+    void remove(String id);
+
+    List<Gateway> findAll();
 }

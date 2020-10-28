@@ -23,12 +23,12 @@ class GatewayServicesAddTest {
     Gateway gatewayFound = null;
 
     private void configure_HappyCase(){
-        Mockito.when(repositoryMock.FindGatewayBySerial(addSample.getSerial())).thenReturn(null);
+        Mockito.when(repositoryMock.findGatewayBySerial(addSample.getSerial())).thenReturn(null);
     }
 
     private void configure_GatewayExistsCase(){
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)100);
-        Mockito.when(repositoryMock.FindGatewayBySerial(addSample.getSerial())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findGatewayBySerial(addSample.getSerial())).thenReturn(gatewayFound);
     }
 
     @BeforeEach
