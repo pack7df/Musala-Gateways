@@ -20,7 +20,7 @@ public interface IGatewayServices {
      * @param data Gateways data. It does not take into account the peripheral list.
      * @return True if the operation completes successfully, false otherwise.
      */
-    boolean add(Gateway data);
+    Gateway add(Gateway data);
 
     /**
      * Updates a gateway.

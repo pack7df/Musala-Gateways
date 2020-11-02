@@ -24,11 +24,13 @@ class GatewayServicesAddTest {
 
     private void configure_HappyCase(){
         Mockito.when(repositoryMock.findGatewayBySerial(addSample.getSerial())).thenReturn(null);
+        Mockito.when(repositoryMock.insert(addSample)).thenReturn(addSample);
     }
 
     private void configure_GatewayExistsCase(){
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)100);
         Mockito.when(repositoryMock.findGatewayBySerial(addSample.getSerial())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.insert(addSample)).thenReturn(addSample);
     }
 
     @BeforeEach
@@ -57,7 +59,7 @@ class GatewayServicesAddTest {
 
         var result= subject.add(addSample);
 
-        Assertions.assertTrue(result);
+        Assertions.assertNotNull(result);
     }
 
     @Test()
@@ -76,6 +78,6 @@ class GatewayServicesAddTest {
 
         var result= subject.add(addSample);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 }

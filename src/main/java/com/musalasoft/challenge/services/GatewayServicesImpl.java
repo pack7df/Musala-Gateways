@@ -1,10 +1,12 @@
 package com.musalasoft.challenge.services;
 
-import com.musalasoft.challenge.repositories.IGatewayRepository;
 import com.musalasoft.challenge.entities.Gateway;
+import com.musalasoft.challenge.repositories.IGatewayRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GatewayServicesImpl implements IGatewayServices {
     private IGatewayRepository repository;
 
@@ -18,11 +20,10 @@ public class GatewayServicesImpl implements IGatewayServices {
     }
 
     @Override
-    public boolean add(Gateway data) {
+    public Gateway add(Gateway data) {
         var gatewayFound = repository.findGatewayBySerial(data.getSerial());
-        if (gatewayFound!=null) return false;
-        repository.insert(data);
-        return true;
+        if (gatewayFound!=null) return null;
+        return repository.insert(data);
     }
 
     @Override
