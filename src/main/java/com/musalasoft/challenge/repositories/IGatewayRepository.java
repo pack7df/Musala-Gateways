@@ -1,4 +1,4 @@
-package com.musalasoft.challenge;
+package com.musalasoft.challenge.repositories;
 
 import com.musalasoft.challenge.entities.Gateway;
 import org.springframework.data.mongodb.repository.MongoRepository;

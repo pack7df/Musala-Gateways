@@ -1,4 +1,4 @@
-package com.musalasoft.challenge;
+package com.musalasoft.challenge.services;
 
 import com.musalasoft.challenge.entities.Peripheral;
 

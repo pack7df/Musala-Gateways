@@ -1,7 +1,7 @@
 package com.musalasoft.challenge.removeGateway;
 
-import com.musalasoft.challenge.GatewayServicesImpl;
-import com.musalasoft.challenge.IGatewayRepository;
+import com.musalasoft.challenge.services.GatewayServicesImpl;
+import com.musalasoft.challenge.repositories.IGatewayRepository;
 import com.musalasoft.challenge.TestDataGeneratorHelper;
 import com.musalasoft.challenge.entities.Gateway;
 import org.junit.jupiter.api.AfterEach;

@@ -1,7 +1,7 @@
 package com.musalasoft.challenge.addPeripheral;
 
-import com.musalasoft.challenge.IGatewayRepository;
-import com.musalasoft.challenge.PeripheralServicesImpl;
+import com.musalasoft.challenge.repositories.IGatewayRepository;
+import com.musalasoft.challenge.services.PeripheralServicesImpl;
 import com.musalasoft.challenge.TestDataGeneratorHelper;
 import com.musalasoft.challenge.entities.Gateway;
 import com.musalasoft.challenge.entities.Peripheral;

@@ -1,5 +1,6 @@
-package com.musalasoft.challenge;
+package com.musalasoft.challenge.services;
 
+import com.musalasoft.challenge.repositories.IGatewayRepository;
 import com.musalasoft.challenge.entities.Peripheral;
 
 public class PeripheralServicesImpl implements IPeripheralServices {
