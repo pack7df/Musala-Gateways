@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IGatewayServices {
     /**
-     * Finds a gatewat given the database Id.
+     * Finds a gateway given the database Id.
      * @param id Database Id.
      * @return The gateway found or null if it doesn't exist.
      */

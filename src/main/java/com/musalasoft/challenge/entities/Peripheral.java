@@ -1,6 +1,6 @@
 package com.musalasoft.challenge.entities;
 
-public class Peripherical {
+public class Peripheral {
     private String uid;
     private String vendor;
     private long created;

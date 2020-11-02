@@ -16,12 +16,12 @@ public class Gateway {
         id = value;
    }
 
-    List<Peripherical> periphericals = new ArrayList<>();
+    List<Peripheral> periphericals = new ArrayList<>();
 
-    public List<Peripherical> getPeriphericals(){
+    public List<Peripheral> getPeriphericals(){
         return periphericals;
     }
-    public void setPeriphericals(List<Peripherical> periphericals){
+    public void setPeriphericals(List<Peripheral> periphericals){
         this.periphericals = periphericals;
 
     }
