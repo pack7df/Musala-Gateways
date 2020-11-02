@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.*;
 
 /**
@@ -27,7 +28,7 @@ class GatewayServicesRemoveTest {
      */
     private void configure_Happyway(){
         gatewayToRemove = TestDataGeneratorHelper.GenerateGateway((byte)1);
-        Mockito.when(repositoryMock.findGateWayById(gatewayToRemove.getId())).thenReturn(gatewayToRemove);
+        Mockito.when(repositoryMock.findById(gatewayToRemove.getId())).thenReturn(ofNullable(gatewayToRemove));
     }
 
     /**
@@ -35,7 +36,7 @@ class GatewayServicesRemoveTest {
      */
     private void configure_Entity_DoesntExist(){
         gatewayToRemove = TestDataGeneratorHelper.GenerateGateway((byte)1);
-        Mockito.when(repositoryMock.findGateWayById(gatewayToRemove.getId())).thenReturn(null);
+        Mockito.when(repositoryMock.findById(gatewayToRemove.getId())).thenReturn(ofNullable(null));
     }
 
     @BeforeEach
@@ -54,7 +55,7 @@ class GatewayServicesRemoveTest {
 
         var result= subject.remove(gatewayToRemove.getId());
 
-        verify(repositoryMock, times(1)).remove(gatewayToRemove.getId());
+        verify(repositoryMock, times(1)).deleteById(gatewayToRemove.getId());
     }
 
     @Test()
@@ -72,7 +73,7 @@ class GatewayServicesRemoveTest {
 
         var result= subject.remove(gatewayToRemove.getId());
 
-        verify(repositoryMock, never()).remove(gatewayToRemove.getId());
+        verify(repositoryMock, never()).deleteById(gatewayToRemove.getId());
     }
 
     @Test()

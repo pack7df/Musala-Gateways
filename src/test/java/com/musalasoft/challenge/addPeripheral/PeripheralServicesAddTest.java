@@ -12,6 +12,8 @@ import org.mockito.Mockito;
 
 import java.util.Date;
 
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.*;
 
 
@@ -37,7 +39,7 @@ public class PeripheralServicesAddTest {
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
         gatewayId = gatewayFound.getId();
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById(gatewayFound.getId())).thenReturn(of(gatewayFound));
     }
 
     @Test()
@@ -46,7 +48,7 @@ public class PeripheralServicesAddTest {
 
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(1)).update(gatewayFound);
+        verify(repositoryMock, times(1)).save(gatewayFound);
     }
 
     @Test()
@@ -77,7 +79,7 @@ public class PeripheralServicesAddTest {
         gatewayId = gatewayFound.getId();
         gatewayFound = null;
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
-        Mockito.when(repositoryMock.findGateWayById (gatewayId)).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayId)).thenReturn(ofNullable(gatewayFound));
     }
 
     @Test()
@@ -85,7 +87,7 @@ public class PeripheralServicesAddTest {
         configure_GatewayNotFound();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).update(Mockito.any());
+        verify(repositoryMock, times(0)).save(Mockito.any());
     }
 
     @Test()
@@ -103,7 +105,7 @@ public class PeripheralServicesAddTest {
         var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
         existingPeripheral.setUid(parameters.getUid());
         gatewayFound.getPeripherals().add(existingPeripheral);
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(of(gatewayFound));
     }
 
     @Test()
@@ -111,7 +113,7 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIdExist();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).update(Mockito.any());
+        verify(repositoryMock, times(0)).save(Mockito.any());
     }
 
     @Test()
@@ -131,7 +133,7 @@ public class PeripheralServicesAddTest {
             var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)(100+i));
             gatewayFound.getPeripherals().add(existingPeripheral);
         }
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(ofNullable(gatewayFound));
     }
 
     @Test()
@@ -139,7 +141,7 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIsFull();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).update(Mockito.any());
+        verify(repositoryMock, times(0)).save(Mockito.any());
     }
 
     @Test()

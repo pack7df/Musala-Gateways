@@ -13,7 +13,7 @@ public class GatewayServicesImpl implements IGatewayServices {
 
     @Override
     public Gateway findById(String id) {
-        return repository.findGateWayById(id);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -26,19 +26,19 @@ public class GatewayServicesImpl implements IGatewayServices {
 
     @Override
     public boolean update(Gateway entity) {
-        var gatewayToEdit = repository.findGateWayById(entity.getId());
+        var gatewayToEdit = repository.findById(entity.getId()).orElse(null);
         if (gatewayToEdit==null) return false;
         var gatewayFound = repository.findGatewayBySerial(entity.getSerial());
         if ((gatewayFound!=null) && (gatewayFound.getId()!=entity.getId())) return false;
-        repository.update(entity);
+        repository.save(entity);
         return true;
     }
 
     @Override
     public boolean remove(String id) {
-        var gatewayToEdit = repository.findGateWayById(id);
+        var gatewayToEdit = repository.findById(id).orElse(null);
         if (gatewayToEdit==null) return false;
-        repository.remove(id);
+        repository.deleteById(id);
         return true;
     }
 

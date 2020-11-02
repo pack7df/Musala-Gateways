@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.*;
 
 /**
@@ -29,7 +31,7 @@ class GatewayServicesUpdateTest {
      */
     private void configure_SerialChangeCase(){
         gatewayToEditFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
-        Mockito.when(repositoryMock.findGateWayById(gatewayToEditFound.getId())).thenReturn(gatewayToEditFound);
+        Mockito.when(repositoryMock.findById(gatewayToEditFound.getId())).thenReturn(ofNullable(gatewayToEditFound));
 
         updateSample = TestDataGeneratorHelper.GenerateGateway((byte)1);
         updateSample.setId(gatewayToEditFound.getId());
@@ -45,7 +47,7 @@ class GatewayServicesUpdateTest {
      */
     private void configure_SerialDoesntChangeCase(){
         gatewayToEditFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
-        Mockito.when(repositoryMock.findGateWayById(gatewayToEditFound.getId())).thenReturn(gatewayToEditFound);
+        Mockito.when(repositoryMock.findById(gatewayToEditFound.getId())).thenReturn(of(gatewayToEditFound));
 
         updateSample = TestDataGeneratorHelper.GenerateGateway((byte)1);
         updateSample.setId(gatewayToEditFound.getId());
@@ -62,7 +64,7 @@ class GatewayServicesUpdateTest {
     private void configure_GatewayExistsCase(){
 
         gatewayToEditFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
-        Mockito.when(repositoryMock.findGateWayById(gatewayToEditFound.getId())).thenReturn(gatewayToEditFound);
+        Mockito.when(repositoryMock.findById(gatewayToEditFound.getId())).thenReturn(ofNullable(gatewayToEditFound));
 
         updateSample = TestDataGeneratorHelper.GenerateGateway((byte)1);
         updateSample.setId(gatewayToEditFound.getId());
@@ -81,7 +83,7 @@ class GatewayServicesUpdateTest {
         gatewayToEditFound = null;
 
         updateSample = TestDataGeneratorHelper.GenerateGateway((byte)1);
-        Mockito.when(repositoryMock.findGateWayById(updateSample.getId())).thenReturn(gatewayToEditFound);
+        Mockito.when(repositoryMock.findById(updateSample.getId())).thenReturn(ofNullable(gatewayToEditFound));
 
         gatewaySerialFound = null;
         Mockito.when(repositoryMock.findGatewayBySerial(updateSample.getSerial())).thenReturn(gatewaySerialFound);
@@ -104,7 +106,7 @@ class GatewayServicesUpdateTest {
 
         var result= subject.update(updateSample);
 
-        verify(repositoryMock, times(1)).update(updateSample);
+        verify(repositoryMock, times(1)).save(updateSample);
     }
 
     @Test()
@@ -122,7 +124,7 @@ class GatewayServicesUpdateTest {
 
         var result= subject.update(updateSample);
 
-        verify(repositoryMock, times(1)).update(updateSample);
+        verify(repositoryMock, times(1)).save(updateSample);
     }
 
     @Test()

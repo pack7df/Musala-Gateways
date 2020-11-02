@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.*;
 
 /**
@@ -31,7 +32,7 @@ class PeripheralServicesRemoveTest {
         gatewayId = gatewayFound.getId();
         var peripheralFound = TestDataGeneratorHelper.GeneratePeripheral((byte)2);
         currentPeripheralId = peripheralFound.getUid();
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(ofNullable(gatewayFound));
         gatewayFound.getPeripherals().add(peripheralFound);
     }
 
@@ -44,7 +45,7 @@ class PeripheralServicesRemoveTest {
         gatewayFound = null;
         var peripheralFound = TestDataGeneratorHelper.GeneratePeripheral((byte)2);
         currentPeripheralId = peripheralFound.getUid();
-        Mockito.when(repositoryMock.findGateWayById (gatewayId)).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayId)).thenReturn(ofNullable(gatewayFound));
         //gatewayFound.getPeripherals().add(peripheralFound);
     }
 
@@ -56,7 +57,7 @@ class PeripheralServicesRemoveTest {
         gatewayId = gatewayFound.getId();
         var peripheralFound = TestDataGeneratorHelper.GeneratePeripheral((byte)2);
         currentPeripheralId = peripheralFound.getUid();
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(ofNullable(gatewayFound));
         //gatewayFound.getPeripherals().add(peripheralFound);
     }
 
@@ -76,7 +77,7 @@ class PeripheralServicesRemoveTest {
 
         var result= subject.remove(gatewayId,currentPeripheralId);
 
-        verify(repositoryMock, times(1)).update(gatewayFound);
+        verify(repositoryMock, times(1)).save(gatewayFound);
     }
 
     @Test()
@@ -94,7 +95,7 @@ class PeripheralServicesRemoveTest {
 
         var result= subject.remove(gatewayId,currentPeripheralId);
 
-        verify(repositoryMock, never()).update(any());
+        verify(repositoryMock, never()).save(any());
     }
 
     @Test()
@@ -113,7 +114,7 @@ class PeripheralServicesRemoveTest {
 
         var result= subject.remove(gatewayId,currentPeripheralId);
 
-        verify(repositoryMock, never()).update(any());
+        verify(repositoryMock, never()).save(any());
     }
 
     @Test()

@@ -1,5 +1,7 @@
 package com.musalasoft.challenge.entities;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Gateway {
     private String serial;
     private String name;
     private String ip;
+    @Id
     private String id;
 
     public String getId() {
