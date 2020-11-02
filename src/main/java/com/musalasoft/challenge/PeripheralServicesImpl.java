@@ -2,14 +2,14 @@ package com.musalasoft.challenge;
 
 import com.musalasoft.challenge.entities.Peripheral;
 
-public class PeriphericalServicesImpl implements  IPeriphericalServices{
+public class PeripheralServicesImpl implements IPeripheralServices {
     @Override
     public void add(String gatewayId, Peripheral data) {
 
     }
 
     @Override
-    public void delete(String periphericalId) {
+    public void delete(String peripheralId) {
 
     }
 

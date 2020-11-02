@@ -2,8 +2,8 @@ package com.musalasoft.challenge;
 
 import com.musalasoft.challenge.entities.Peripheral;
 
-public interface IPeriphericalServices {
+public interface IPeripheralServices {
     void add(String gatewayId, Peripheral data);
-    void delete(String periphericalId);
+    void delete(String peripheralId);
     void update(Peripheral data);
 }
