@@ -28,7 +28,16 @@ public class PeripheralServicesImpl implements IPeripheralServices {
 
     @Override
     public boolean update(String gatewayId, int currentUid, Peripheral data) {
-
+        //Validation
+        var gateway = repository.findGateWayById(gatewayId);
+        if (gateway==null) return false;
+        var currentPeripheral = gateway.getPeripherals().stream().filter(p -> p.getUid()==currentUid).findFirst();
+        if (currentPeripheral.isEmpty()) return false;
+        var anotherPeripheral = gateway.getPeripherals().stream().filter(p -> p.getUid()==data.getUid()).findFirst();
+        if (!anotherPeripheral.isEmpty() && (data.getUid()!=currentUid)) return false;
+        gateway.getPeripherals().remove(currentPeripheral.get());
+        gateway.getPeripherals().add(data);
+        repository.update(gateway);
         return true;
     }
 }
