@@ -46,7 +46,7 @@ public class PeripheralServicesAddTest {
 
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(1)).insert(gatewayFound);
+        verify(repositoryMock, times(1)).update(gatewayFound);
     }
 
     @Test()
@@ -85,7 +85,7 @@ public class PeripheralServicesAddTest {
         configure_GatewayNotFound();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).insert(Mockito.any());
+        verify(repositoryMock, times(0)).update(Mockito.any());
     }
 
     @Test()
@@ -111,7 +111,7 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIdExist();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).insert(Mockito.any());
+        verify(repositoryMock, times(0)).update(Mockito.any());
     }
 
     @Test()
@@ -139,7 +139,7 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIsFull();
         var result= subject.add(gatewayId,parameters);
 
-        verify(repositoryMock, times(0)).insert(Mockito.any());
+        verify(repositoryMock, times(0)).update(Mockito.any());
     }
 
     @Test()
