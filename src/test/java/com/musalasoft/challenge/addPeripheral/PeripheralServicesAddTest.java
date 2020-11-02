@@ -6,13 +6,13 @@ import com.musalasoft.challenge.TestDataGeneratorHelper;
 import com.musalasoft.challenge.entities.Gateway;
 import com.musalasoft.challenge.entities.Peripheral;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.Date;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -25,6 +25,13 @@ public class PeripheralServicesAddTest {
     Peripheral parameters = null;
     String gatewayId = null;
     IGatewayRepository repositoryMock;
+
+    @BeforeEach
+    void setUp() {
+        repositoryMock = mock(IGatewayRepository.class);
+        subject = new PeripheralServicesImpl(repositoryMock);
+
+    }
 
     private void configure_HappyCase(){
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
@@ -43,7 +50,7 @@ public class PeripheralServicesAddTest {
     }
 
     @Test()
-    public void addPeripheral_OnSuccess_Peripheral_Saved(){
+    public void addPeripheral_OnSuccess_Peripheral_FieldSaved(){
         configure_HappyCase();
         var result= subject.add(gatewayId,parameters);
 
@@ -57,11 +64,20 @@ public class PeripheralServicesAddTest {
         Assertions.assertEquals(parameters.isStatus(),saved.isStatus());
     }
 
+    @Test()
+    public void addPeripheral_OnSuccess_ReturnsTrue(){
+        configure_HappyCase();
+        var result= subject.add(gatewayId,parameters);
+
+        Assertions.assertTrue (result);
+    }
+
     private void configure_GatewayNotFound(){
-        gatewayFound = null;
+        gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)2);;
         gatewayId = gatewayFound.getId();
+        gatewayFound = null;
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
-        Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
+        Mockito.when(repositoryMock.findGateWayById (gatewayId)).thenReturn(gatewayFound);
     }
 
     @Test()
