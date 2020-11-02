@@ -3,6 +3,7 @@ package com.musalasoft.challenge.entities;
 import java.util.Date;
 
 public class Peripheral {
+
     private int uid;
     private String vendor;
     private Date created;

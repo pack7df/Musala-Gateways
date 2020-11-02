@@ -16,13 +16,13 @@ public class Gateway {
         id = value;
    }
 
-    List<Peripheral> periphericals = new ArrayList<>();
+    List<Peripheral> peripherals = new ArrayList<>();
 
-    public List<Peripheral> getPeriphericals(){
-        return periphericals;
+    public List<Peripheral> getPeripherals(){
+        return peripherals;
     }
-    public void setPeriphericals(List<Peripheral> periphericals){
-        this.periphericals = periphericals;
+    public void setPeripherals(List<Peripheral> periphericals){
+        this.peripherals = periphericals;
 
     }
     public String getSerial() {

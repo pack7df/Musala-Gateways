@@ -7,15 +7,16 @@ public class PeripheralServicesImpl implements IPeripheralServices {
     public PeripheralServicesImpl(IGatewayRepository repository){
         this.repository =  repository;
     }
+
     @Override
     public boolean add(String gatewayId, Peripheral data) {
         var gateway = repository.findGateWayById(gatewayId);
         if (gateway==null) return false;
-        var currentPeripheral = gateway.getPeriphericals().stream().filter(p -> p.getUid()==data.getUid()).findFirst();
+        var currentPeripheral = gateway.getPeripherals().stream().filter(p -> p.getUid()==data.getUid()).findFirst();
         if (!currentPeripheral.isEmpty()) return false;
-        var count = gateway.getPeriphericals().stream().count();
+        var count = gateway.getPeripherals().stream().count();
         if (count>9) return false;
-        gateway.getPeriphericals().add(data);
+        gateway.getPeripherals().add(data);
         repository.update(gateway);
         return true;
     }
@@ -26,7 +27,8 @@ public class PeripheralServicesImpl implements IPeripheralServices {
     }
 
     @Override
-    public boolean update(Peripheral data) {
-        return false;
+    public boolean update(String gatewayId, int currentUid, Peripheral data) {
+
+        return true;
     }
 }

@@ -54,8 +54,8 @@ public class PeripheralServicesAddTest {
         configure_HappyCase();
         var result= subject.add(gatewayId,parameters);
 
-        Assertions.assertEquals(1,gatewayFound.getPeriphericals().stream().count());
-        var saved = gatewayFound.getPeriphericals().stream().findFirst().get();
+        Assertions.assertEquals(1,gatewayFound.getPeripherals().stream().count());
+        var saved = gatewayFound.getPeripherals().stream().findFirst().get();
 
         //Ensure date is approximately the time was called.
         Assertions.assertTrue(new Date().getTime() - saved.getCreated().getTime()<1000);
@@ -102,7 +102,7 @@ public class PeripheralServicesAddTest {
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
         var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
         existingPeripheral.setUid(parameters.getUid());
-        gatewayFound.getPeriphericals().add(existingPeripheral);
+        gatewayFound.getPeripherals().add(existingPeripheral);
         Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
     }
 
@@ -129,7 +129,7 @@ public class PeripheralServicesAddTest {
         for (int i=0; i< 10; i++)
         {
             var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)(100+i));
-            gatewayFound.getPeriphericals().add(existingPeripheral);
+            gatewayFound.getPeripherals().add(existingPeripheral);
         }
         Mockito.when(repositoryMock.findGateWayById (gatewayFound.getId())).thenReturn(gatewayFound);
     }
