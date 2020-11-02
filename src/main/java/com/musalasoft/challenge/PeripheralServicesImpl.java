@@ -31,7 +31,7 @@ public class PeripheralServicesImpl implements IPeripheralServices {
     }
 
     @Override
-    public boolean delete(String peripheralId) {
+    public boolean remove(String gatewayId, int peripheralId) {
         return false;
     }
 
