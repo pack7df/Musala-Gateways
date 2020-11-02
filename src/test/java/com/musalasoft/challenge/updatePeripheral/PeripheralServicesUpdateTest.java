@@ -86,7 +86,7 @@ public class PeripheralServicesUpdateTest {
 
         var result= subject.update(gatewayId,currentPeripheralId,parameters);
 
-        Assertions.assertTrue (result);
+        Assertions.assertNotNull (result);
     }
 
 
@@ -119,7 +119,7 @@ public class PeripheralServicesUpdateTest {
 
         var result= subject.update(gatewayId,currentPeripheralId,parameters);
 
-        Assertions.assertTrue (result);
+        Assertions.assertNotNull (result);
     }
 
     private void configure_GatewayNotFound(){
@@ -148,7 +148,7 @@ public class PeripheralServicesUpdateTest {
         configure_GatewayNotFound();
         var result= subject.update(gatewayId,currentPeripheralId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 
     private void configure_PeripheralId_Doesnt_exists(){
@@ -176,7 +176,7 @@ public class PeripheralServicesUpdateTest {
         configure_PeripheralId_Doesnt_exists();
         var result= subject.update(gatewayId,currentPeripheralId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 
     private void configure_PeripheralIdChange_AlreadyExist(){
@@ -206,6 +206,6 @@ public class PeripheralServicesUpdateTest {
         configure_PeripheralIdChange_AlreadyExist();
         var result= subject.update(gatewayId,currentPeripheralId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/gateway")
@@ -43,11 +44,24 @@ public class GatewayController {
         return gatewayServices.remove(gatewayId);
     }
 
-    @PutMapping(value = "/{gatewayId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Gateway updateGateway(@PathVariable String gatewayId, @Valid @RequestBody Gateway data) {
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Gateway updateGateway(@Valid @RequestBody Gateway data) {
+        if (data.getId()==null) return  null;
+        data.setId(data.getId().trim());
+        if (data.getId().equals("")) return null;
         var validation = validateGateway(data);
         if (!validation) return null;
         return gatewayServices.update(data);
+    }
+
+    @GetMapping
+    public List<Gateway> getAllGateways() {
+        return gatewayServices.getAll();
+    }
+
+    @GetMapping("/{gatewayId}")
+    public Gateway getGateway(@PathVariable String gatewayId) {
+        return gatewayServices.findById(gatewayId);
     }
 }
 

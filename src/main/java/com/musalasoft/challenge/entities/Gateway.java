@@ -2,13 +2,17 @@ package com.musalasoft.challenge.entities;
 
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Gateway {
+    @NotBlank
     private String serial;
+    @NotBlank
     private String name;
+    @NotBlank
     private String ip;
     @Id
     private String id;

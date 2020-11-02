@@ -71,7 +71,7 @@ public class PeripheralServicesAddTest {
         configure_HappyCase();
         var result= subject.add(gatewayId,parameters);
 
-        Assertions.assertTrue (result);
+        Assertions.assertNotNull (result);
     }
 
     private void configure_GatewayNotFound(){
@@ -95,7 +95,7 @@ public class PeripheralServicesAddTest {
         configure_GatewayNotFound();
         var result= subject.add(gatewayId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 
     private void configure_PeripheralIdExist(){
@@ -121,7 +121,7 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIdExist();
         var result= subject.add(gatewayId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 
     private void configure_PeripheralIsFull(){
@@ -149,6 +149,6 @@ public class PeripheralServicesAddTest {
         configure_PeripheralIsFull();
         var result= subject.add(gatewayId,parameters);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 }
