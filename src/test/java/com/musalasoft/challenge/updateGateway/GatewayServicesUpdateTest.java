@@ -38,7 +38,7 @@ class GatewayServicesUpdateTest {
 
         gatewaySerialFound = null;
         Mockito.when(repositoryMock.findGatewayBySerial(updateSample.getSerial())).thenReturn(gatewaySerialFound);
-
+        Mockito.when(repositoryMock.save(updateSample)).thenReturn(updateSample);
 
     }
 
@@ -54,7 +54,7 @@ class GatewayServicesUpdateTest {
 
         gatewaySerialFound = gatewayToEditFound;
         Mockito.when(repositoryMock.findGatewayBySerial(updateSample.getSerial())).thenReturn(gatewaySerialFound);
-
+        Mockito.when(repositoryMock.save(updateSample)).thenReturn(updateSample);
 
     }
 
@@ -71,7 +71,7 @@ class GatewayServicesUpdateTest {
 
         gatewaySerialFound = TestDataGeneratorHelper.GenerateGateway((byte)100);
         Mockito.when(repositoryMock.findGatewayBySerial(updateSample.getSerial())).thenReturn(gatewaySerialFound);
-
+        Mockito.when(repositoryMock.save(updateSample)).thenReturn(updateSample);
 
 
     }
@@ -87,7 +87,7 @@ class GatewayServicesUpdateTest {
 
         gatewaySerialFound = null;
         Mockito.when(repositoryMock.findGatewayBySerial(updateSample.getSerial())).thenReturn(gatewaySerialFound);
-
+        Mockito.when(repositoryMock.save(updateSample)).thenReturn(updateSample);
     }
 
     @BeforeEach
@@ -115,7 +115,7 @@ class GatewayServicesUpdateTest {
 
         var result= subject.update(updateSample);
 
-        Assertions.assertTrue(result);
+        Assertions.assertNotNull(result);
     }
 
     @Test()
@@ -133,7 +133,7 @@ class GatewayServicesUpdateTest {
 
         var result= subject.update(updateSample);
 
-        Assertions.assertTrue(result);
+        Assertions.assertNotNull(result);
     }
 
     @Test()
@@ -152,7 +152,7 @@ class GatewayServicesUpdateTest {
 
         var result= subject.update(updateSample);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 
     @Test()
@@ -166,11 +166,10 @@ class GatewayServicesUpdateTest {
 
     @Test()
     public void updateGateway_NoEntityFound_ReturnFalse(){
-
         configure_GatewayToEdit_DoesntExist();
 
         var result= subject.update(updateSample);
 
-        Assertions.assertFalse(result);
+        Assertions.assertNull(result);
     }
 }

@@ -27,7 +27,7 @@ public interface IGatewayServices {
      * @param data Data used to update the gateway. It does not take into account the peripheral list.
      * @return True if the operation completes successfully, false otherwise.
      */
-    boolean update(Gateway data);
+    Gateway update(Gateway data);
 
     /**
      * Removes a gateway.

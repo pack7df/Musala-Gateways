@@ -4,10 +4,7 @@ import com.musalasoft.challenge.entities.Gateway;
 import com.musalasoft.challenge.services.IGatewayServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -33,11 +30,24 @@ public class GatewayController {
         if (!isIpValid) return false;
         return true;
     }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Gateway addGateway(@Valid @RequestBody Gateway newGateway){
         var validation = validateGateway(newGateway);
         if (!validation) return null;
         return gatewayServices.add(newGateway);
+    }
+
+    @DeleteMapping("/{gatewayId}")
+    public boolean deleteGateway(@PathVariable String gatewayId){
+        return gatewayServices.remove(gatewayId);
+    }
+
+    @PutMapping(value = "/{gatewayId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Gateway updateGateway(@PathVariable String gatewayId, @Valid @RequestBody Gateway data) {
+        var validation = validateGateway(data);
+        if (!validation) return null;
+        return gatewayServices.update(data);
     }
 }
 

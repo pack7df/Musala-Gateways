@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Gateway {
     private String serial;
     private String name;
