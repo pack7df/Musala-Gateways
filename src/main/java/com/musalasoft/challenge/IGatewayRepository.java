@@ -44,4 +44,6 @@ public interface IGatewayRepository {
      * @return A list of all gateways in Database.
      */
     List<Gateway> findAll();
+
+
 }

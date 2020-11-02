@@ -4,17 +4,17 @@ import com.musalasoft.challenge.entities.Peripheral;
 
 public class PeripheralServicesImpl implements IPeripheralServices {
     @Override
-    public void add(String gatewayId, Peripheral data) {
-
+    public boolean add(String gatewayId, Peripheral data) {
+        return false;
     }
 
     @Override
-    public void delete(String peripheralId) {
-
+    public boolean delete(String peripheralId) {
+        return false;
     }
 
     @Override
-    public void update(Peripheral data) {
-
+    public boolean update(Peripheral data) {
+        return false;
     }
 }

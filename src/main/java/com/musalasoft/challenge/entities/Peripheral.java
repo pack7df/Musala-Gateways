@@ -1,16 +1,18 @@
 package com.musalasoft.challenge.entities;
 
+import java.util.Date;
+
 public class Peripheral {
-    private String uid;
+    private int uid;
     private String vendor;
-    private long created;
+    private Date created;
     private boolean status;
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
@@ -22,11 +24,11 @@ public class Peripheral {
         this.vendor = vendor;
     }
 
-    public long getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(long created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
