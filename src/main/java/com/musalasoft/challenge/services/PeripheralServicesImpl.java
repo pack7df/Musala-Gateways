@@ -71,6 +71,7 @@ public class PeripheralServicesImpl implements IPeripheralServices {
         //
 
         gateway.getPeripherals().remove(currentPeripheral);
+        data.setCreated(currentPeripheral.getCreated());
         gateway.getPeripherals().add(data);
         repository.save(gateway);
         return data;
