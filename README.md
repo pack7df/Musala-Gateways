@@ -40,9 +40,9 @@ A Gateway with the following fields:
 ## Building the application
 - Install JDK 8 or later
 - Install a MongoDb server.
+- Install Postman client in order to test the api rest.
 - Set environment variable JAVA_HOME pointing to java root directory
 - Build the application JAR file
-
     With maven
     
         $> mvn clean package
@@ -63,6 +63,8 @@ The generated application JAR file will be ```./target/<name>-<version>.jar```
 - Run the application with maven:
 
         $> mvn spring-boot:run
+		
+Note: The project will run in port 8080.
 
-## postman collection for test:
+## Postman collection for test:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5dd2495ed61bd84b4852)
