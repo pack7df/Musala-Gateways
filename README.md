@@ -28,10 +28,11 @@ A Gateway with the following fields:
 - name   : String
 - ip     : String
 - id     : String
-- peripherals: []{
+- peripherals: listf of 
+                 {
                   - uid : int
                   - vendor : string 
-				  - created : date
+                  - created : date
                   - status : boolean
                  }
 ```
