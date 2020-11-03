@@ -24,16 +24,16 @@ It's just CRUD services.
 The database model is a simple MongoDb Database with only one document type.
 A Gateway with the following fields:
 ```
-	- serial : String  
-    - name   : String  
-    - ip     : String  
-    - id     : String  
-	- peripherals: []  {  
-						- uid : int  
-						- vendor : string  
-						- created : date  
-						- status : boolean  
-						}  
+- serial : String
+- name   : String
+- ip     : String
+- id     : String
+- peripherals: []{
+                  - uid : int
+                  - vendor : string 
+				  - created : date
+                  - status : boolean
+                 }
 ```
 
 ## Building the application
