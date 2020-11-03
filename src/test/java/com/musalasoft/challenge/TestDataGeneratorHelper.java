@@ -18,7 +18,6 @@ public class TestDataGeneratorHelper {
     public static Peripheral GeneratePeripheral(byte code){
         var peripheral = new Peripheral();
         peripheral.setUid(code);
-        peripheral.setCreated(new Date());
         peripheral.setStatus(false);
         peripheral.setVendor("Vendor - " + code);
         return peripheral;

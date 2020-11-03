@@ -39,6 +39,7 @@ public class PeripheralServicesAddTest {
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
         gatewayId = gatewayFound.getId();
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
+        parameters.setCreated(null);
         Mockito.when(repositoryMock.findById(gatewayFound.getId())).thenReturn(of(gatewayFound));
     }
 
@@ -79,6 +80,7 @@ public class PeripheralServicesAddTest {
         gatewayId = gatewayFound.getId();
         gatewayFound = null;
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
+        parameters.setCreated(null);
         Mockito.when(repositoryMock.findById (gatewayId)).thenReturn(ofNullable(gatewayFound));
     }
 
@@ -105,6 +107,7 @@ public class PeripheralServicesAddTest {
         var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
         existingPeripheral.setUid(parameters.getUid());
         gatewayFound.getPeripherals().add(existingPeripheral);
+        parameters.setCreated(null);
         Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(of(gatewayFound));
     }
 
@@ -128,6 +131,7 @@ public class PeripheralServicesAddTest {
         gatewayFound = TestDataGeneratorHelper.GenerateGateway((byte)2);
         gatewayId = gatewayFound.getId();
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)1);
+        parameters.setCreated(null);
         for (int i=0; i< 10; i++)
         {
             var existingPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)(100+i));

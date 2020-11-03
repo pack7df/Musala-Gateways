@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Date;
+
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.*;
@@ -43,6 +45,7 @@ public class PeripheralServicesUpdateTest {
         Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(of(gatewayFound));
 
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
+        parameters.setCreated(new Date());
         parameters.setUid(currentPeripheralId);
     }
 
@@ -56,6 +59,7 @@ public class PeripheralServicesUpdateTest {
         Mockito.when(repositoryMock.findById (gatewayFound.getId())).thenReturn(of(gatewayFound));
 
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
+        parameters.setCreated(new Date());
     }
 
     @Test()
@@ -132,6 +136,7 @@ public class PeripheralServicesUpdateTest {
         Mockito.when(repositoryMock.findById (gatewayId)).thenReturn(ofNullable(gatewayFound));
 
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
+        parameters.setCreated(new Date());
         //parameters.setUid(currentPeripheralId);
     }
 
@@ -161,6 +166,7 @@ public class PeripheralServicesUpdateTest {
 
         parameters = TestDataGeneratorHelper.GeneratePeripheral((byte)3);
         parameters.setUid(currentPeripheralId);
+        parameters.setCreated(new Date());
     }
 
     @Test()
@@ -191,6 +197,7 @@ public class PeripheralServicesUpdateTest {
         var anotherPeripheral = TestDataGeneratorHelper.GeneratePeripheral((byte)4);
         gatewayFound.getPeripherals().add(anotherPeripheral);
         parameters.setUid(anotherPeripheral.getUid());
+        parameters.setCreated(new Date());
     }
 
     @Test()

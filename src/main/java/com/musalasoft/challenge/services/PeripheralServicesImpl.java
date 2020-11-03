@@ -4,6 +4,8 @@ import com.musalasoft.challenge.repositories.IGatewayRepository;
 import com.musalasoft.challenge.entities.Peripheral;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class PeripheralServicesImpl implements IPeripheralServices {
     private IGatewayRepository repository;
@@ -24,10 +26,11 @@ public class PeripheralServicesImpl implements IPeripheralServices {
         if (currentPeripheral!=null) return null;
 
         //No more than 10 peripherals.
+
         var count = gateway.getPeripherals().stream().count();
         if (count>9) return null;
 
-
+        data.setCreated(new Date());
         gateway.getPeripherals().add(data);
         repository.save(gateway);
         return data;
