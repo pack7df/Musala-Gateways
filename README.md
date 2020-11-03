@@ -1,6 +1,6 @@
 # Gateways Api
 ## Description
-Management system for a local gategays and peripheral control. 
+Management system for a local gateways and peripheral control. 
 It's just CRUD services.
 
 ## Requirements 
